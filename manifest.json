@@ -1,0 +1,27 @@
+{
+    "manifest_version": 3,
+    "name": "Screenshot 2 github",
+    "version": "1.0",
+    "description": "Save the entire webpage as a high-resolution image.",
+    "permissions": [
+        "activeTab",
+        "scripting",
+        "tabs",
+        "windows",
+        "storage"
+    ],
+    "background": {
+        "service_worker": "background.js"
+    },
+    "action": {
+        "default_popup": "popup.html",
+        "default_icon": {
+            "16": "icon.png",
+            "48": "icon.png",
+            "128": "icon.png"
+        }
+    },
+    "host_permissions": [
+        "https://api.github.com/"
+    ]
+}

@@ -1,0 +1,38 @@
+body {
+    width: 300px;
+    padding: 20px;
+    font-family: Arial, sans-serif;
+}
+
+#filename,
+#filepath {
+    width: 100%;
+    margin-top: 12px;
+}
+
+.header {
+    text-align: center;
+    border-radius: 8px;
+}
+
+.header>img {
+    border-radius: 8px;
+}
+
+#commitmsg {
+    width: 100%;
+    display: block;
+    margin-top: 12px;
+}
+
+.footer {
+    margin-top: 12px;
+    text-align: center;
+}
+
+#config {
+    position: absolute;
+    right: 4px;
+    top: 4px;
+    cursor: pointer;
+}
