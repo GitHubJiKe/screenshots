@@ -9,3 +9,6 @@
 
 ### config page
 ![alt text](config_page.png)
+
+### push success
+![alt text](push_success.png)
