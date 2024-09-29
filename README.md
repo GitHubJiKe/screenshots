@@ -1,6 +1,6 @@
 # Screenshot 2 github
 
-> totaly free to use
+> totaly free to use 
 
 ![logo](logo.png)
 
