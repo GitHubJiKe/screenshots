@@ -36,3 +36,10 @@ body {
     top: 4px;
     cursor: pointer;
 }
+
+.draw {
+    display: flex;
+    align-items: center;
+    justify-content: flex-end;
+    margin-top: 12px;
+}

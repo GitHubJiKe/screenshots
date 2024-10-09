@@ -3,6 +3,7 @@
 
 <head>
     <title>Screenshot 2 github</title>
+    <script src="sweetalert2@11.js"></script>
     <link rel="stylesheet" href="popup.css">
 </head>
 
@@ -13,6 +14,12 @@
     <img src="config.png" alt="config" width="20" height="20" id="config">
     <input type="text" id="filepath" placeholder="Enter dir path (default is /)" />
     <input type="text" id="filename" placeholder="Enter file name (default is screenshot)" />
+    <div class="draw">
+        <input type="checkbox" name="draw" id="draw">
+        <label for="draw">
+            preview
+        </label>
+    </div>
     <textarea id="commitmsg" placeholder="Enter commit message (default is Add new file)"></textarea>
     <div class="footer">
         <button id="saveButton">Screenshot and upload 2 github</button>
