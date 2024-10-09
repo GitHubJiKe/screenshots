@@ -8,11 +8,23 @@ chrome.runtime.onMessage.addListener(async (message, sender, sendResponse) => {
         chrome.tabs.create({ url: 'config.html' });
     }
 
+    if (message.action === 'push') {
+        const { filepath, filename, commitmsg, dataUrl } = message
+        const file = dataUrl.split(',')[1]
+        const { githubUrl, githubToken } = await getConfig()
+        const res = await upload({ file, filepath, filename, commitmsg, githubToken, githubUrl })
+        chrome.runtime.sendMessage(res);
+    }
+
 });
 
+async function getConfig() {
+    const config = await chrome.storage.local.get(['githubUrl', 'githubToken'])
+    return config
+}
+
 async function captureVisibleTab(message, sendResponse) {
-    const items = await chrome.storage.local.get(['githubUrl', 'githubToken'])
-    const { githubUrl, githubToken } = items
+    const { githubUrl, githubToken } = await getConfig()
 
     if (!githubUrl || !githubToken) {
         chrome.runtime.sendMessage({ status: 'fail', message: 'please config github url and token' })
@@ -23,6 +35,14 @@ async function captureVisibleTab(message, sendResponse) {
     const filename = message.filename
     const commitmsg = message.commitmsg
     const filepath = message.filepath
+    const needdraw = message.needdraw
+
+    if (needdraw) {
+        chrome.storage.local.set({ dataUrl, filename, commitmsg, filepath })
+        chrome.tabs.create({ url: 'draw.html' });
+        return
+    }
+
     const file = dataUrl.split(',')[1]
     const res = await upload({ file, filepath, filename, commitmsg, githubToken, githubUrl })
     chrome.runtime.sendMessage(res);
